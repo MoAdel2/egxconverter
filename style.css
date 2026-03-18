@@ -270,7 +270,7 @@ footer {
     }
 
     #swapBtn:active::before {
-        transform: rotate(180deg);
+        transform: rotate(360deg);
     }
 
     .categories button:hover,
