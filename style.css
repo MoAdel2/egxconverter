@@ -205,7 +205,7 @@ input:focus, select:focus {
 
 /* دوران الأيقونة نفسها */
 #swapBtn:active::before {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 }
 
 /* 7. النسخ */
