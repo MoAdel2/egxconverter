@@ -1,6 +1,6 @@
 /**
  * إعدادات وضع التشغيل:
- * اختر 'static' إذا كنت ترفع الموقع على Netlify (تحديث عبر المتصفح).
+ * اختر 'static' إذا كنت ترفع الموقع على Vercel (تحديث عبر المتصفح).
  * اختر 'server' إذا كنت ترفع الموقع على InfinityFree (تحديث عبر PHP + Cron Job).
  */
 const DEPLOYMENT_MODE = 'static';
@@ -66,39 +66,9 @@ async function initCurrencyConverter() {
 
     console.timeEnd("initCurrencyConverter total");
 }
-
-async function loadRates() {
-    if (DEPLOYMENT_MODE === 'server') {
-        console.log("الوضع الحالي: Server Mode (PHP)");
-        const res = await fetch("rates.json?v=" + new Date().getTime());
-        currencyRates = await res.json();
-    } else {
-        console.log("الوضع الحالي: Static Mode (JavaScript)");
-        const cacheKey = 'currency_rates_data';
-        const cacheTimeKey = 'currency_rates_timestamp';
-        const oneDay = 24 * 60 * 60 * 1000;
-        
-        const lastSaved = localStorage.getItem(cacheTimeKey);
-        const now = new Date().getTime();
-
-        if (lastSaved && (now - lastSaved < oneDay)) {
-            const cachedData = localStorage.getItem(cacheKey);
-            if (cachedData) {
-                currencyRates = JSON.parse(cachedData);
-                return;
-            }
-        }
-
-        const res = await fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`);
-        const data = await res.json();
-        if (data.result === "success") {
-            currencyRates = data.conversion_rates;
-            localStorage.setItem(cacheKey, JSON.stringify(currencyRates));
-            localStorage.setItem(cacheTimeKey, now);
-        }
-    }
-}
-
+// -------------------------------------------------
+loadRates()
+// ------------------------------------
 function loadCurrencyUnits() {
     const from = document.getElementById("fromUnit");
     const to = document.getElementById("toUnit");
