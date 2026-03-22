@@ -15,7 +15,7 @@ let currencyRates = {};
 let currencyNames = {};
 
 // أشهر العملات (نضعها خارج الدالة لزيادة الأداء)
-const popularCurrencies = ["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "CNY"];
+const popularCurrencies = ["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "CNY","EGP"];
 
 // ربط العملة بكود العلم (تم تصحيح أكواد الدول لـ FlagCDN)
 const currencyFlags = {
